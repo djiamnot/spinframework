@@ -6,3 +6,4 @@ class Button : public wxFrame
   Button (const wxString& title);
   void OnQuit(wxCommandEvent & event);
 };
+

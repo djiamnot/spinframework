@@ -29,8 +29,6 @@ enum
 
 bool MyApp::OnInit()
 {
-  //processArgs();
-  // wxPrintf("Using: %s",wxVERSION_STRING );
   MyFrame *frame = new MyFrame(_("My simple frame,"), wxPoint(50,50), wxSize(250,150));
 
   frame->Connect(ID_Quit, wxEVT_COMMAND_MENU_SELECTED, 
@@ -67,7 +65,7 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
   SetSizer(hSizer);
   hSizer->SetSizeHints(panel);
   Connect(wxID_EXIT, wxEVT_COMMAND_BUTTON_CLICKED, 
-		  wxCommandEventHandler(Button::OnQuit));
+ 		  wxCommandEventHandler(Button::OnQuit));
   button->SetFocus(); 
   CreateStatusBar();
   SetStatusText(_("Running..."));
