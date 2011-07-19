@@ -29,7 +29,7 @@ enum
 
 bool MyApp::OnInit()
 {
-  MyFrame *frame = new MyFrame(_("My simple frame,"), wxPoint(50,50), wxSize(250,150));
+  MyFrame *frame = new MyFrame(_("My simple frame,"), wxPoint(50,50), wxSize(300,300));
 
   frame->Connect(ID_Quit, wxEVT_COMMAND_MENU_SELECTED, 
 				 (wxObjectEventFunction) &MyFrame::OnQuit);
@@ -50,6 +50,7 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
 
   wxPanel *panel = new wxPanel(this, wxID_ANY);
   wxStaticText *empty = new wxStaticText(panel, -1, " ");
+  LogPanel *logPanel = new LogPanel(panel, wxID_ANY);
   menuFile->Append(ID_About, _("&About.."));
   menuFile->AppendSeparator();
   menuFile->Append(ID_Quit, _("E&xit"));
@@ -59,15 +60,19 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
   SetMenuBar(menuBar);
   wxBoxSizer *hSizer = new wxBoxSizer(wxHORIZONTAL);
   wxButton *button = new wxButton(panel, wxID_EXIT, wxT("Quit"));
+  wxBoxSizer *vSizer = new wxBoxSizer(wxVERTICAL);
   hSizer->Add(empty,0, wxALL,10);
   hSizer->Add(button, 0, wxALL, 10);
-  SetSizer(hSizer);
-  hSizer->SetSizeHints(panel);
+  vSizer->Add(hSizer, 0, wxALL, 10);
+  vSizer->Add(logPanel, 0, wxALL, 10);
+  panel->SetSizer(vSizer);
+  vSizer->SetSizeHints(this);
   Connect(wxID_EXIT, wxEVT_COMMAND_BUTTON_CLICKED, 
  		  wxCommandEventHandler(MyFrame::OnQuit));
   button->SetFocus(); 
   CreateStatusBar();
   SetStatusText(_("Running..."));
+  logPanel->writeLine("Hello!");
 }
 
 void MyFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
