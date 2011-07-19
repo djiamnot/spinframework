@@ -1,7 +1,7 @@
 #include <iostream>
 #include <wx/wx.h>
 #include <wx/version.h>
-#include "button.h"
+#include "logpanel.h"
 
 // define a class derived from wxApp
 class MyApp: public wxApp
@@ -57,7 +57,6 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
   wxMenuBar *menuBar = new wxMenuBar;
   menuBar->Append(menuFile, _("&File"));
   SetMenuBar(menuBar);
-  
   wxBoxSizer *hSizer = new wxBoxSizer(wxHORIZONTAL);
   wxButton *button = new wxButton(panel, wxID_EXIT, wxT("Quit"));
   hSizer->Add(empty,0, wxALL,10);
@@ -65,7 +64,7 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
   SetSizer(hSizer);
   hSizer->SetSizeHints(panel);
   Connect(wxID_EXIT, wxEVT_COMMAND_BUTTON_CLICKED, 
- 		  wxCommandEventHandler(Button::OnQuit));
+ 		  wxCommandEventHandler(MyFrame::OnQuit));
   button->SetFocus(); 
   CreateStatusBar();
   SetStatusText(_("Running..."));
@@ -85,9 +84,5 @@ void MyFrame::OnAbout(wxCommandEvent& WXUNUSED(event))
 			   wxOK | wxICON_INFORMATION, this);
 }
 
-void Button::OnQuit(wxCommandEvent & WXUNUSED(event))
-{
-    Close(true);
-}
 // run main() (from wx)
 IMPLEMENT_APP(MyApp)
