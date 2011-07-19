@@ -1,0 +1,17 @@
+#include "logpanel.h"
+
+
+void LogPanel::writeLine(std::string line){
+	int max_length = 10;
+	int length;
+	while (wxTextCtrl::GetNumberOfLines() - max_length >=1)
+	{
+		length = wxTextCtrl::GetLineLength(0);
+		if (length != -1)
+		{
+			wxTextCtrl::Remove(0,length++);
+		}
+	}
+	wxTextCtrl::WriteText(line);
+	wxTextCtrl::SetInsertionPoint(wxTextCtrl::GetLastPosition());
+}
