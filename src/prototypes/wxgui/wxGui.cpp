@@ -61,10 +61,10 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
   wxBoxSizer *hSizer = new wxBoxSizer(wxHORIZONTAL);
   wxButton *button = new wxButton(panel, wxID_EXIT, wxT("Quit"));
   wxBoxSizer *vSizer = new wxBoxSizer(wxVERTICAL);
-  hSizer->Add(empty,0, wxALL,10);
-  hSizer->Add(button, 0, wxALL, 10);
-  vSizer->Add(hSizer, 0, wxALL, 10);
-  vSizer->Add(logPanel, 0, wxALL, 10);
+  hSizer->Add(empty,0, wxEXPAND|wxALL,10);
+  hSizer->Add(button, 0, wxALIGN_RIGHT|wxALL, 10);
+  vSizer->Add(hSizer, 0, wxALIGN_RIGHT|wxEXPAND|wxALL, 10);
+  vSizer->Add(logPanel, 0, wxEXPAND|wxALL, 10);
   panel->SetSizer(vSizer);
   vSizer->SetSizeHints(this);
   Connect(wxID_EXIT, wxEVT_COMMAND_BUTTON_CLICKED, 
@@ -72,7 +72,7 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
   button->SetFocus(); 
   CreateStatusBar();
   SetStatusText(_("Running..."));
-  logPanel->writeLine("Hello!");
+  //logPanel->writeLine("Hello!");
 }
 
 void MyFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
