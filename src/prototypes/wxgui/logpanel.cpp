@@ -2,7 +2,7 @@
 
 
 void LogPanel::writeLine(std::string line){
-	int max_length = 10;
+	int max_length = 100;
 	int length;
 	while (wxTextCtrl::GetNumberOfLines() - max_length >=1)
 	{
