@@ -1,7 +1,7 @@
 #include "logpanel.h"
 
 
-void LogPanel::writeLine(std::string line){
+void LogPanel::writeLine(wxString line){
 	int max_length = 100;
 	int length;
 	while (wxTextCtrl::GetNumberOfLines() - max_length >=1)
