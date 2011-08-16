@@ -10,5 +10,6 @@ public:
   ServerFrame(const wxString& title, const wxPoint& pos, const wxSize& size);
   void OnQuit(wxCommandEvent& event);
   void OnAbout(wxCommandEvent& event);
+  DECLARE_EVENT_TABLE()
 
 };

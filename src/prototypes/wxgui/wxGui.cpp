@@ -7,6 +7,8 @@
 //#include "logpanel.h"
 #include "ServerFrame.h"
 
+
+
 // define a class derived from wxApp
 class MyApp: public wxApp
 {
@@ -16,10 +18,8 @@ public:
   virtual bool OnCmdLineParsed(wxCmdLineParser& parser);
   virtual bool OnCmdLineError(wxCmdLineParser & parser);
 
+
 };
-
-
-
 
 static const wxCmdLineEntryDesc g_cmdLineDesc [] =
 {
@@ -30,10 +30,6 @@ static const wxCmdLineEntryDesc g_cmdLineDesc [] =
 };
 
 // In order to be able to react to a menu command, it needs to have a unique identifier (const or enum)
-
-
-
-
 
 bool MyApp::OnInit()
 {
@@ -88,11 +84,6 @@ void ServerFrame::OnAbout(wxCommandEvent& WXUNUSED(event))
 			   _("About Spin server"), 
 			   wxOK | wxICON_INFORMATION, this);
 }
-
-BEGIN_EVENT_TABLE(ServerFrame, wxFrame)
-    EVT_MENU(ID_Quit,  ServerFrame::OnQuit)
-    EVT_MENU(ID_About, ServerFrame::OnAbout)
-END_EVENT_TABLE()
 
 // run main() (from wx)
 IMPLEMENT_APP(MyApp)

@@ -7,7 +7,10 @@ enum
 	ID_About,
   };
 
-
+BEGIN_EVENT_TABLE(ServerFrame, wxFrame)
+    EVT_MENU(ID_Quit,  ServerFrame::OnQuit)
+    EVT_MENU(ID_About, ServerFrame::OnAbout)
+END_EVENT_TABLE()
 
 ServerFrame::ServerFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
   : wxFrame(NULL, -1, title, pos, size)
